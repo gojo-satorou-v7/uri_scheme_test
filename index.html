@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self'; frame-src 'self'; child-src 'self'; form-action 'self'; base-uri 'self'; navigate-to 'none';">
-    <title>Example</title>
+    <!-- CSP: Block navigation to external sites -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; form-action 'self'; frame-src 'self'; base-uri 'self'; block-all-mixed-content;">
+    <title>CSP Navigation Blocking</title>
 </head>
 <body>
-    <p>Links to external domains are blocked by CSP.</p>
-    <a href="https://example.com">Visit Example</a>
+    <p>Links to external domains should be blocked by CSP.</p>
+    <a href="https://example.com" target="_blank">Visit Example.com</a>
 </body>
 </html>
