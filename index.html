@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- CSP: Block navigation to external sites -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; form-action 'self'; frame-src 'self'; base-uri 'self'; block-all-mixed-content;">
-    <title>CSP Navigation Blocking</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self';">
+    <title>CSP Blocking Example</title>
 </head>
 <body>
-    <p>Links to external domains should be blocked by CSP.</p>
-    <a href="https://example.com" target="_blank">Visit Example.com</a>
+    <h1>CSP Blocking in Action</h1>
+    <p>This page has a strict CSP policy that blocks external resources.</p>
+
+    <!-- This script will be blocked because it's from an external source -->
+    <script src="https://gojo-satorou-v7.github.io/manual/main.js"></script>
+
+    <!-- This image will be blocked because it's from an external source -->
+    <img src="https://gojo-satorou-v7.github.io/manual/img1.jpg" alt="Blocked Image">
+
+    <!-- This inline script will be blocked because CSP doesn't allow unsafe-inline -->
+    <script>
+        console.log("This inline script will be blocked!");
+    </script>
+
+    <!-- This external stylesheet will be blocked -->
+    <link rel="stylesheet" href="https://example.com/unsafe-style.css">
 </body>
 </html>
