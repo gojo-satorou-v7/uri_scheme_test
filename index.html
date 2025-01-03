@@ -15,11 +15,9 @@
 
     <!-- This image will be blocked because it's from an external source -->
     <img src="https://news.harvard.edu/wp-content/uploads/2014/10/hello-kitty-wallpaper-37_605.jpg" alt="Blocked Image">
-
+    
     <!-- This inline script will be blocked because CSP doesn't allow unsafe-inline -->
-    <script>
-        console.log("This inline script will be blocked!");
-    </script>
+    <a href="javascript:alert(document.domain)"></a>
 
     <!-- This external stylesheet will be blocked -->
     <link rel="stylesheet" href="https://example.com/unsafe-style.css">
