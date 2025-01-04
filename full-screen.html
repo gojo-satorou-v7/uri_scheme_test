@@ -3,46 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Full Screen and New Window Example</title>
+    <title>Full Screen and Open Window</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <button id="actionButton">Go Full Screen & Open Window</button>
+    <button id="fullscreenButton">Enter Full Screen & Open Window</button>
 
     <script>
-        // Function to enter full-screen mode
-        function enterFullScreen() {
-            const elem = document.documentElement;
-            if (elem.requestFullscreen) {
-                elem.requestFullscreen();
-            } else if (elem.mozRequestFullScreen) { // For Firefox
-                elem.mozRequestFullScreen();
-            } else if (elem.webkitRequestFullscreen) { // For Chrome, Safari, and Opera
-                elem.webkitRequestFullscreen();
-            } else if (elem.msRequestFullscreen) { // For IE/Edge
-                elem.msRequestFullscreen();
+        document.getElementById('fullscreenButton').addEventListener('click', function() {
+            // Enter fullscreen mode
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.mozRequestFullScreen) { // Firefox
+                document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari, and Opera
+                document.documentElement.webkitRequestFullscreen();
+            } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
+                document.documentElement.msRequestFullscreen();
             }
-        }
 
-        // Function to open a new window in the upper-right corner
-        function openNewWindow() {
-            const width = 800; // Set desired width
-            const height = 600; // Set desired height
+            // Calculate the position for the new window
+            const screenWidth = window.screen.width;
+            const screenHeight = window.screen.height;
+            const windowWidth = 600; // Width of the new window
+            const windowHeight = 400; // Height of the new window
+            const left = screenWidth - windowWidth; // Position on the right
+            const top = 0; // Position at the top
 
-            // Calculate position: upper-right corner
-            const left = screen.width - width;
-            const top = 0;
-
-            window.open(
-                'https://example.com',
-                '_blank',
-                `width=${width},height=${height},left=${left},top=${top}`
-            );
-        }
-
-        // Attach event listener to the button
-        document.getElementById('actionButton').addEventListener('click', () => {
-            enterFullScreen();
-            openNewWindow();
+            // Open a new window in the upper right corner
+            window.open('https://example.com', '_blank', `width=${windowWidth},height=${windowHeight},left=${left},top=${top}`);
         });
     </script>
 </body>
