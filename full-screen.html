@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Screen and New Window Example</title>
+</head>
+<body>
+    <button id="actionButton">Go Full Screen & Open Window</button>
+
+    <script>
+        // Function to enter full-screen mode
+        function enterFullScreen() {
+            const elem = document.documentElement;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) { // For Firefox
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) { // For Chrome, Safari, and Opera
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { // For IE/Edge
+                elem.msRequestFullscreen();
+            }
+        }
+
+        // Function to open a new window in the upper-right corner
+        function openNewWindow() {
+            const width = 800; // Set desired width
+            const height = 600; // Set desired height
+
+            // Calculate position: upper-right corner
+            const left = screen.width - width;
+            const top = 0;
+
+            window.open(
+                'https://example.com',
+                '_blank',
+                `width=${width},height=${height},left=${left},top=${top}`
+            );
+        }
+
+        // Attach event listener to the button
+        document.getElementById('actionButton').addEventListener('click', () => {
+            enterFullScreen();
+            openNewWindow();
+        });
+    </script>
+</body>
+</html>
