@@ -1,126 +1,185 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Chrome URLs in Iframes</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arc URLs in Iframes</title>
 </head>
 <body>
+    <h1>Arc URLs Embedded in Iframes</h1>
+    <style>
+        iframe {
+            width: 100%;
+            height: 200px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+    </style>
+    <div id="iframes-container">
+        <!-- Iframes will be listed here -->
+        <script>
+            const urls = [
+                "arc://about",
+                "arc://access-code-cast",
+                "arc://accessibility",
+                "arc://app-service-internals",
+                "arc://app-settings",
+                "arc://apps",
+                "arc://attribution-internals",
+                "arc://autofill-internals",
+                "arc://batch-upload",
+                "arc://blob-internals",
+                "arc://bluetooth-internals",
+                "arc://bookmarks",
+                "arc://bookmarks-side-panel.top-chrome",
+                "arc://browser-switch",
+                "arc://certificate-manager",
+                "arc://chrome",
+                "arc://chrome-signin",
+                "arc://chrome-urls",
+                "arc://commerce-internals",
+                "arc://compare",
+                "arc://components",
+                "arc://conflicts",
+                "arc://connection-help",
+                "arc://connection-monitoring-detected",
+                "arc://connectors-internals",
+                "arc://crashes",
+                "arc://credits",
+                "arc://data-sharing-internals",
+                "arc://device-log",
+                "arc://dino",
+                "arc://discards",
+                "arc://download-internals",
+                "arc://downloads",
+                "arc://extensions",
+                "arc://extensions-internals",
+                "arc://family-link-user-internals",
+                "arc://feedback",
+                "arc://flags",
+                "arc://gcm-internals",
+                "arc://gpu",
+                "arc://help",
+                "arc://histograms",
+                "arc://history",
+                "arc://history-clusters-internals",
+                "arc://history-clusters-side-panel.top-chrome",
+                "arc://identity-internals",
+                "arc://indexeddb-internals",
+                "arc://inspect",
+                "arc://internals",
+                "arc://interstitials",
+                "arc://intro",
+                "arc://local-state",
+                "arc://location-internals",
+                "arc://managed-user-profile-notice",
+                "arc://management",
+                "arc://media-engagement",
+                "arc://media-internals",
+                "arc://media-router-internals",
+                "arc://memory-internals",
+                "arc://metrics-internals",
+                "arc://net-export",
+                "arc://net-internals",
+                "arc://network-errors",
+                "arc://new-tab-page",
+                "arc://new-tab-page-third-party",
+                "arc://newtab",
+                "arc://ntp-tiles-internals",
+                "arc://omnibox",
+                "arc://omnibox-popup.top-chrome",
+                "arc://on-device-internals",
+                "arc://on-device-translation-internals",
+                "arc://optimization-guide-internals",
+                "arc://password-manager",
+                "arc://password-manager-internals",
+                "arc://policy",
+                "arc://predictors",
+                "arc://prefs-internals",
+                "arc://print",
+                "arc://privacy-sandbox-dialog",
+                "arc://privacy-sandbox-internals",
+                "arc://private-aggregation-internals",
+                "arc://process-internals",
+                "arc://profile-customization",
+                "arc://profile-internals",
+                "arc://profile-picker",
+                "arc://quota-internals",
+                "arc://read-later.top-chrome",
+                "arc://reset-password",
+                "arc://safe-browsing",
+                "arc://sandbox",
+                "arc://search-engine-choice",
+                "arc://segmentation-internals",
+                "arc://serviceworker-internals",
+                "arc://settings",
+                "arc://shopping-insights-side-panel.top-chrome",
+                "arc://signin-dice-web-intercept.top-chrome",
+                "arc://signin-email-confirmation",
+                "arc://signin-error",
+                "arc://signin-internals",
+                "arc://signin-reauth",
+                "arc://site-engagement",
+                "arc://suggest-internals",
+                "arc://support-tool",
+                "arc://sync-confirmation",
+                "arc://sync-internals",
+                "arc://system",
+                "arc://tab-search.top-chrome",
+                "arc://terms",
+                "arc://topics-internals",
+                "arc://traces-internals",
+                "arc://tracing",
+                "arc://translate-internals",
+                "arc://ukm",
+                "arc://usb-internals",
+                "arc://user-actions",
+                "arc://version",
+                "arc://view-cert",
+                "arc://web-app-internals",
+                "arc://webrtc-internals",
+                "arc://webrtc-logs",
+                "arc://webui-gallery",
+                "arc://welcome",
+                "arc://whats-new",
+                "arc-untrusted://compose",
+                "arc-untrusted://data-sharing",
+                "arc-untrusted://hats",
+                "arc-untrusted://lens",
+                "arc-untrusted://lens-overlay",
+                "arc-untrusted://print",
+                "arc-untrusted://privacy-sandbox-dialog",
+                "arc-untrusted://read-anything-side-panel.top-chrome",
+                "arc://internals/session-service",
+                "arc://badcastcrash/",
+                "arc://inducebrowsercrashforrealz/",
+                "arc://inducebrowserdcheckforrealz/",
+                "arc://crash/",
+                "arc://crash/rust",
+                "arc://crashdump/",
+                "arc://kill/",
+                "arc://hang/",
+                "arc://shorthang/",
+                "arc://gpuclean/",
+                "arc://gpucrash/",
+                "arc://gpuhang/",
+                "arc://memory-exhaust/",
+                "arc://memory-pressure-critical/",
+                "arc://memory-pressure-moderate/",
+                "arc://inducebrowserheapcorruption/",
+                "arc://crash/cfg",
+                "arc://heapcorruptioncrash/",
+                "arc://quit/",
+                "arc://restart/"
+            ];
 
-    <h1>Chrome URLs in Iframes</h1>
-
-    <p>**Note:** This is for experimental purposes only. Loading internal browser URLs in this way may not work as expected and could have unintended consequences.</p>
-
-    <div>
-        <iframe src="arc://about"></iframe><br>
-        <iframe src="arc://access-code-cast"></iframe><br>
-        <iframe src="arc://accessibility"></iframe><br>
-        <iframe src="arc://app-service-internals"></iframe><br>
-        <iframe src="arc://app-settings"></iframe><br>
-        <iframe src="arc://apps"></iframe><br>
-        <iframe src="arc://attribution-internals"></iframe><br>
-        <iframe src="arc://autofill-internals"></iframe><br>
-        <iframe src="arc://batch-upload"></iframe><br>
-        <iframe src="arc://blob-internals"></iframe><br>
-        <iframe src="arc://bluetooth-internals"></iframe><br>
-        <iframe src="arc://bookmarks"></iframe><br>
-        <iframe src="arc://bookmarks-side-panel.top-chrome"></iframe><br>
-        <iframe src="arc://browser-switch"></iframe><br>
-        <iframe src="arc://certificate-manager"></iframe><br>
-        <iframe src="arc://chrome"></iframe><br>
-        <iframe src="arc://chrome-signin"></iframe><br>
-        <iframe src="arc://chrome-urls"></iframe><br>
-        <iframe src="arc://commerce-internals"></iframe><br>
-        <iframe src="arc://compare"></iframe><br>
-        <iframe src="arc://components"></iframe><br>
-        <iframe src="arc://conflicts"></iframe><br>
-        <iframe src="arc://connection-help"></iframe><br>
-        <iframe src="arc://connection-monitoring-detected"></iframe><br>
-        <iframe src="arc://connectors-internals"></iframe><br>
-        <iframe src="arc://crashes"></iframe><br>
-        <iframe src="arc://credits"></iframe><br>
-        <iframe src="arc://data-sharing-internals"></iframe><br>
-        <iframe src="arc://device-log"></iframe><br>
-        <iframe src="arc://dino"></iframe><br>
-        <iframe src="arc://discards"></iframe><br>
-        <iframe src="arc://download-internals"></iframe><br>
-        <iframe src="arc://downloads"></iframe><br>
-        <iframe src="arc://extensions"></iframe><br>
-        <iframe src="arc://extensions-internals"></iframe><br>
-        <iframe src="arc://family-link-user-internals"></iframe><br>
-        <iframe src="arc://feedback"></iframe><br>
-        <iframe src="arc://flags"></iframe><br>
-        <iframe src="arc://gcm-internals"></iframe><br>
-        <iframe src="arc://gpu"></iframe><br>
-        <iframe src="arc://help"></iframe><br>
-        <iframe src="arc://histograms"></iframe><br>
-        <iframe src="arc://history"></iframe><br>
-        <iframe src="arc://history-clusters-internals"></iframe><br>
-        <iframe src="arc://history-clusters-side-panel.top-chrome"></iframe><br>
-        <iframe src="arc://identity-internals"></iframe><br>
-        <iframe src="arc://indexeddb-internals"></iframe><br>
-        <iframe src="arc://inspect"></iframe><br>
-        <iframe src="arc://internals"></iframe><br>
-        <iframe src="arc://interstitials"></iframe><br>
-        <iframe src="arc://intro"></iframe><br>
-        <iframe src="arc://local-state"></iframe><br>
-        <iframe src="arc://location-internals"></iframe><br>
-        <iframe src="arc://managed-user-profile-notice"></iframe><br>
-        <iframe src="arc://management"></iframe><br>
-        <iframe src="arc://media-engagement"></iframe><br>
-        <iframe src="arc://media-internals"></iframe><br>
-        <iframe src="arc://media-router-internals"></iframe><br>
-        <iframe src="arc://memory-internals"></iframe><br>
-        <iframe src="arc://metrics-internals"></iframe><br>
-        <iframe src="arc://net-export"></iframe><br>
-        <iframe src="arc://net-internals"></iframe><br>
-        <iframe src="arc://network-errors"></iframe><br>
-        <iframe src="arc://new-tab-page"></iframe><br>
-        <iframe src="arc://new-tab-page-third-party"></iframe><br>
-        <iframe src="arc://newtab"></iframe><br>
-        <iframe src="arc://ntp-tiles-internals"></iframe><br>
-        <iframe src="arc://omnibox"></iframe><br>
-        <iframe src="arc://omnibox-popup.top-chrome"></iframe><br>
-        <iframe src="arc://on-device-internals"></iframe><br>
-        <iframe src="arc://on-device-translation-internals"></iframe><br>
-        <iframe src="arc://optimization-guide-internals"></iframe><br>
-        <iframe src="arc://password-manager"></iframe><br>
-        <iframe src="arc://password-manager-internals"></iframe><br>
-        <iframe src="arc://policy"></iframe><br>
-        <iframe src="arc://predictors"></iframe><br>
-        <iframe src="arc://prefs-internals"></iframe><br>
-        <iframe src="arc://print"></iframe><br>
-        <iframe src="arc://privacy-sandbox-dialog"></iframe><br>
-        <iframe src="arc://privacy-sandbox-internals"></iframe><br>
-        <iframe src="arc://private-aggregation-internals"></iframe><br>
-        <iframe src="arc://process-internals"></iframe><br>
-        <iframe src="arc://profile-customization"></iframe><br>
-        <iframe src="arc://profile-internals"></iframe><br>
-        <iframe src="arc://profile-picker"></iframe><br>
-        <iframe src="arc://quota-internals"></iframe><br>
-        <iframe src="arc://read-later.top-chrome"></iframe><br>
-        <iframe src="arc://reset-password"></iframe><br>
-        <iframe src="arc://safe-browsing"></iframe><br>
-        <iframe src="arc://sandbox"></iframe><br>
-        <iframe src="arc://search-engine-choice"></iframe><br>
-        <iframe src="arc://segmentation-internals"></iframe><br>
-        <iframe src="arc://serviceworker-internals"></iframe><br>
-        <iframe src="arc://settings"></iframe><br>
-        <iframe src="arc://shopping-insights-side-panel.top-chrome"></iframe><br>
-        <iframe src="arc://signin-dice-web-intercept.top-chrome"></iframe><br>
-        <iframe src="arc://signin-email-confirmation"></iframe><br>
-        <iframe src="arc://signin-error"></iframe><br>
-        <iframe src="arc://signin-internals"></iframe><br>
-        <iframe src="arc://signin-reauth"></iframe><br>
-        <iframe src="arc://site-engagement"></iframe><br>
-        <iframe src="arc://suggest-internals"></iframe><br>
-        <iframe src="arc://support-tool"></iframe><br>
-        <iframe src="arc://sync-confirmation"></iframe><br>
-        <iframe src="arc://sync-internals"></iframe><br>
-        <iframe src="arc://system"></iframe><br>
-        <iframe src="arc://tab-search.top-chrome"></iframe><br>
-        <iframe src="arc://terms"></iframe><br>
-        <iframe src="arc://topics-internals"></iframe><br>
-        <iframe src="arc://traces-internals"></iframe><br>
-        <iframe src="arc://tracing"></iframe><br>
-        <iframe src="arc://translate-internals"></iframe><br>
-        <iframe src="arc://ukm"></iframe><br>
-        <iframe src="arc://usb-internals"></iframe
+            const container = document.getElementById('iframes-container');
+            urls.forEach(url => {
+                const iframe = document.createElement('iframe');
+                iframe.src = url;
+                container.appendChild(iframe);
+            });
+        </script>
+    </div>
+</body>
+</html>
